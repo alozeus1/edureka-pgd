@@ -1,0 +1,34 @@
+pipeline{
+    
+    tools{
+        maven 'mymaven'
+    }
+
+    agent any
+
+   stages{
+       stage('Clone a Repo'){
+           steps{
+               git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
+           }
+       }
+
+      stage('parallel stage') {
+
+      parallel {
+
+       	stage('Job1'){
+          	 steps{
+              	echo "This parallel job1"
+          	 }
+      	 }
+       
+       stage('Job2'){
+           	steps{
+               echo "This parallel job2" 
+           }
+       }
+    }
+  }
+ }
+}

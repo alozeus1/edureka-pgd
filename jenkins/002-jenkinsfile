@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                // Build your application here
+                sh 'mvn clean package'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests for your application
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy your application
+                sh 'kubectl apply -f deployment.yaml'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // Actions to perform when the pipeline succeeds
+            echo 'Pipeline succeeded!'
+        }
+        
+        failure {
+            // Actions to perform when the pipeline fails
+            echo 'Pipeline failed!'
+        }
+    }
+}

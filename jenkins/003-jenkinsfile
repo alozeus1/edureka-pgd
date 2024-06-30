@@ -1,0 +1,18 @@
+pipeline{
+    
+    agent any
+    
+    stages{
+        stage('Print message') {
+            steps{
+                echo "Hello from Jenkins"
+            }
+        }
+        stage('Clone a Repo'){
+            steps{
+                git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
+            }
+        }
+        
+    }
+}

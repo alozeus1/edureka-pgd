@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    
+    parameters {
+        string(name: 'Tool', defaultValue: 'Jenkins', description: 'Tool name')
+        string(name: 'username', defaultValue: 'admin', description: 'user name logged in')
+    }
+    
+    stages {
+        stage('Print the tool name') {
+            steps {
+                echo "The tool we are using is ${params.Tool}"
+                echo "The user logged in is ${params.username}" // Corrected 'params.username'
+            }
+        }
+    }
+}

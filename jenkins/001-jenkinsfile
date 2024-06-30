@@ -1,0 +1,30 @@
+pipeline{
+    tools{
+        // This section is optional
+        // here we write the tools configured that will be used to execute the steps in stages like maven tools, ansible tools etc
+    }
+    agent{
+        // this is a mandatory section
+        // In this section we will write labels of the sevrer where we have to run the pipeline stages
+        // by default pipeline will be executed on the jenkins server only
+    }
+
+    // paramters are used in pipeline to value to all stages. Instead of hard coding the data in the pipline it is always better to create paramter
+    //paramters are nothing but unique names with value with a single value or multpiple values. paramter can store - String, Number, Boolean, Choices
+    // As a paramter is used in a pipeline it becomes a paramter build */ 
+
+    paramter{
+        String(name:parmName, defaultValue: 'val1' description: demo1)
+
+    }
+
+    stages{ // jobs to be performed
+        stage('job1') // the jobs to be performed {
+
+        }
+        steps{
+            // here write steps for what has to be built
+            ${params.Name}
+        }
+    }
+}
